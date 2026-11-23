@@ -69,7 +69,6 @@
     html {
       scroll-behavior: smooth;
       font-size: 16px;
-      overflow-x: hidden;
     }
 
     body {
@@ -516,10 +515,54 @@
       flex-direction: column;
       align-items: center;
       width: 100%;
-      min-width: 0;
     }
 
-    .avatar {
+    /* Executive Leadership Cards (Strictly Equal Size & Prominence) */
+    .leader-card {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 318px;
+      transition: box-shadow var(--transition);
+    }
+
+    .leader-card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .leader-accent-bar {
+      height: 5px;
+      width: 100%;
+    }
+
+    .leader-accent-bar.navy {
+      background: linear-gradient(90deg, var(--navy-900), var(--slate-700));
+    }
+
+    .leader-accent-bar.emerald {
+      background: linear-gradient(90deg, var(--emerald-700), var(--emerald-600));
+    }
+
+    .leader-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .profile-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
     .profile-identity {
       display: flex;
       align-items: center;
@@ -527,8 +570,16 @@
       min-width: 0;
     }
 
-    .profile-identity > div {
-      min-width: 0;
+    .avatar {
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #ffffff;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
     }
 
     .avatar-lg {
@@ -789,7 +840,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 0;
     }
 
     .t-branch-col::before {
@@ -968,11 +1018,6 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      min-width: 0;
-    }
-
-    .combined-left > div {
-      min-width: 0;
     }
 
     .combined-num-box {
@@ -1212,8 +1257,11 @@
       align-items: center;
     }
 
-    .pricing-box > div {
-      min-width: 0;
+    .pricing-factors {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 18px;
     }
 
     .pricing-factors li {
@@ -1316,7 +1364,6 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: var(--radius-md);
       padding: 16px;
-      min-width: 0;
     }
 
     .contact-label {
@@ -1549,7 +1596,7 @@
     }
 
     /* =========================================================================
-       10. RESPONSIVE BREAKPOINTS (Tablet, Mobile & Small Screens)
+       10. RESPONSIVE BREAKPOINTS
        ========================================================================= */
     @media (max-width: 1024px) {
       .org-pillars {
@@ -1557,26 +1604,25 @@
         gap: 48px;
       }
 
-      .leader-card,
-      .member-card,
-      .team-count-card,
-      .t-branch-wrapper {
+      .leader-card {
         min-height: auto;
-        max-width: 580px;
-        width: 100%;
+        max-width: 560px;
+      }
+
+      .t-branch-wrapper {
+        max-width: 560px;
       }
 
       .grid-4 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .contact-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .pricing-box {
         grid-template-columns: 1fr;
-        gap: 24px;
       }
     }
 
@@ -1596,104 +1642,13 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .combined-banner {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 26px 24px;
-        gap: 18px;
-      }
-
-      .combined-formula {
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-      }
-
-      .footer-brand {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-    }
-
     @media (max-width: 600px) {
-      .container {
-        padding: 0 16px;
-      }
-
-      .navbar-inner {
-        height: 64px;
-      }
-
-      .nav-logo {
-        height: 30px;
-      }
-
       .section {
-        padding: 52px 0;
-      }
-
-      .section-header {
-        margin-bottom: 32px;
+        padding: 56px 0;
       }
 
       .hero {
-        padding: 44px 0 56px;
-      }
-
-      .hero-brand-badge {
-        padding: 12px 18px;
-        margin-bottom: 22px;
-      }
-
-      .hero-logo {
-        height: 36px;
-      }
-
-      .org-co-pill {
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-        padding: 8px 14px;
-        gap: 8px;
-      }
-
-      .leader-body,
-      .member-card {
-        padding: 18px;
-      }
-
-      .avatar-lg {
-        width: 48px;
-        height: 48px;
-        font-size: 0.95rem;
-      }
-
-      .avatar-md {
-        width: 42px;
-        height: 42px;
-        font-size: 0.85rem;
-      }
-
-      .profile-top {
-        gap: 10px;
-      }
-
-      .profile-identity {
-        gap: 10px;
-      }
-
-      .profile-name {
-        font-size: 1.02rem;
+        padding: 48px 0 60px;
       }
 
       .grid-4,
@@ -1702,35 +1657,10 @@
         grid-template-columns: 1fr;
       }
 
-      .pricing-box {
-        padding: 24px 20px;
-      }
-
-      .pricing-cta-panel {
-        padding: 22px 18px;
-      }
-
-      .cta-section {
-        padding: 56px 0;
-      }
-
-      /* Clean vertical left-rail sibling hierarchy for Shamroz & Rehan under Waqar on mobile */
-      .t-branch-wrapper {
-        padding-top: 18px;
-      }
-
-      .t-branch-wrapper::before {
-        height: 18px;
-        left: 16px;
-        transform: none;
-      }
-
+      /* Stack Functional Leads cleanly on small mobile screens */
       .t-branch-grid {
         grid-template-columns: 1fr;
         gap: 20px;
-        border-left: 2px solid var(--border-medium);
-        padding-left: 16px;
-        margin-left: 16px;
       }
 
       .t-branch-grid::before {
@@ -1739,22 +1669,23 @@
 
       .t-branch-col {
         padding-top: 0;
-        align-items: stretch;
       }
 
       .t-branch-col::before {
-        content: '';
-        position: absolute;
-        top: 34px;
-        left: -16px;
-        transform: none;
-        width: 16px;
-        height: 2px;
-        background-color: var(--border-medium);
+        display: none;
+      }
+
+      .t-branch-col + .t-branch-col {
+        padding-top: 20px;
+      }
+
+      .t-branch-col + .t-branch-col::before {
+        display: block;
+        height: 20px;
       }
 
       .combined-banner {
-        padding: 22px 18px;
+        padding: 24px 20px;
       }
 
       .combined-left {
@@ -1763,41 +1694,9 @@
         gap: 14px;
       }
 
-      .combined-num-box {
-        font-size: 2rem;
-        padding: 12px 18px;
-      }
-
-      .combined-title {
-        font-size: 1.15rem;
-      }
-    }
-
-    @media (max-width: 520px) {
       .nav-actions .btn-primary {
-        display: none;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-ctas,
-      .cta-buttons {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .hero-ctas .btn,
-      .cta-buttons .btn {
-        width: 100%;
-      }
-
-      .lead-card {
-        padding: 14px;
-      }
-
-      .btn {
-        white-space: normal;
-        text-align: center;
+        padding: 8px 12px;
+        font-size: 0.78rem;
       }
     }
 
@@ -2962,18 +2861,6 @@
           mobileToggle.setAttribute('aria-expanded', 'false');
         }
       };
-
-      document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
-          window.closeMobileMenu();
-        }
-      });
-
-      window.addEventListener('resize', function () {
-        if (window.innerWidth > 820) {
-          window.closeMobileMenu();
-        }
-      });
     })();
   </script>
 </body>
